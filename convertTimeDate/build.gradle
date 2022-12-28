@@ -1,24 +1,16 @@
-//
-//apply plugin: 'com.github.dcendents.android-maven'
-//
-//group='com.github.faizul14'
 
-//buildscript {
-//    dependencies {
-//        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-//    }
-//}
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
 
+//configure library
 publishing {
     publications {
         release(MavenPublication) {
             groupId = 'com.github.faizul14'
-            artifactId = 'demo-simple-android-lib'
+            artifactId = 'firstLibrary'
             version = '0.0.0'
 
             afterEvaluate {
@@ -51,6 +43,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    //configure library
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
